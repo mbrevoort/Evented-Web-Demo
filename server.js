@@ -11,7 +11,7 @@ app.configure(function(){
 });  
 
 app.get('/', function(req, res, next) {
-  res.end("hmmmm what to do with this....\n");
+  res.end("hmmmm what to do with this.....\n");
 });
 
 // call twilio, record message, in a websocket stream recorded audio and transcription
