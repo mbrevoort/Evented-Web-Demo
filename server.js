@@ -22,7 +22,7 @@ app.get('/twilio', function(req, res, next) {
 });
 
 app.post('/twilio', function(req, res, next) {
-    var recUrl = req.query.RecordingUrl;
+    var recUrl = req.body.RecordingUrl;
     util.log("Recording URL=" + recUrl);
     return res.send("ok");
 });
