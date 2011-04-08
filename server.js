@@ -7,6 +7,7 @@ var http        = require('http'),
 app.configure(function(){
   app.set("view engine", "hbs");
   app.set('views', __dirname + '/views');
+  app.use(express.bodyParser());
   app.use(express.static(__dirname + '/static'));
 });  
 
