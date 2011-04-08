@@ -26,7 +26,6 @@ app.get('/twilio', function(req, res, next) {
 });
 
 app.get('/twilio_transcribe', function(req, res, next) {
-    var req.query.
     res.render("twilio/transcribe", { locals: { } });    
     util.log(util.inspect(req));
 });
