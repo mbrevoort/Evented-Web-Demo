@@ -17,12 +17,13 @@ app.get('/', function(req, res, next) {
 // call twilio, record message, in a websocket stream recorded audio and transcription
 
 app.get('/twilio', function(req, res, next) {
-    var recUrl = req.query.RecordingUrl;
-    if(recUrl) {
-        util.log("Recording URL=" + recUrl);
-        return res.send("ok");
-    }
     res.render("twilio", { locals: { } });
+});
+
+app.post('/twilio', function(req, res, next) {
+    var recUrl = req.query.RecordingUrl;
+    util.log("Recording URL=" + recUrl);
+    return res.send("ok");
 });
 
 app.get('/twilio_transcribe', function(req, res, next) {
