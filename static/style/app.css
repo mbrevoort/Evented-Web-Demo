@@ -1,0 +1,15 @@
+body {
+    color: #333;
+}
+
+#num_clients {
+    float:right;
+    text-align: center;
+    border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;
+    background-color:#ddd;
+    padding: 10px;
+}
+
+#num_clients span {
+    font-size: 3em;
+}
