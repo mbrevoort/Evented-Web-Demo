@@ -22,11 +22,16 @@ body {
     border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;
     background-color:#ddd;
     padding: 10px;
-	padding-top:30px;
+	padding-top:20px;
 	margin:5px;
 	width:140px;
-	height:120px;
+	height:130px;
 	float: left;
 	display: inline;
 	text-align: center;
+}
+
+audio {
+	width: 140px;
+    border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;
 }
