@@ -26,7 +26,7 @@
     
     socket.connect();
     
-    setInterval(function() { incomingCall({ CllSid: "12345", From: "3035551212", FromCity: "Aurora", FromState: "CO"})}, 5000);
+    //setInterval(function() { incomingCall({ CllSid: "12345", From: "3035551212", FromCity: "Aurora", FromState: "CO"})}, 5000);
     
 // }(jQuery);
 
