@@ -13,3 +13,20 @@ body {
 #num_clients span {
     font-size: 3em;
 }
+
+#status_container {
+	width:100%;
+}
+
+#status_container div.incoming {
+    border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;
+    background-color:#ddd;
+    padding: 10px;
+	padding-top:30px;
+	margin:5px;
+	width:140px;
+	height:120px;
+	float: left;
+	display: inline;
+	text-align: center;
+}
