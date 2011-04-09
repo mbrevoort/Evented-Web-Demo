@@ -19,7 +19,7 @@ app.get('/', function(req, res, next) {
 // call twilio, record message, in a websocket stream recorded audio and transcription
 
 app.get('/twilio', function(req, res, next) {
-    console.log(res.query);
+    console.log(req.query);
     res.render("twilio", { locals: { } });
 });
 

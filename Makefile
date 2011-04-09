@@ -6,5 +6,8 @@ deploy:
 	
 restart:
 	ssh node@mbrevoort.no.de 'node-service-restart'
-
+	
+log:
+	ssh node@mbrevoort.no.de 'node-service-log'
+    
 .PHONY: test
