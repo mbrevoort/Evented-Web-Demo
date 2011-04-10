@@ -26,7 +26,7 @@ socket.on('disconnect', function(){
     $("#num_clients span").html("-");
 });
 
-socket.connect("",{ reconnect: true});
+socket.connect();
     
 $("#change_message_container button").live('click', function() {
     var elem = $("#change_message");
