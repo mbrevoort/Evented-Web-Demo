@@ -2,16 +2,25 @@ body {
     color: #333;
 }
 
-#num_clients {
+#num_clients, #connection_status {
     float:left;
     text-align: center;
     border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;
     background-color:#ddd;
     padding: 10px;
 	height:70px;
+	margin-right:10px;
 }
 
-#num_clients span {
+#connection_status .disconnected {
+	color: #FF0000;
+}
+
+#connection_status .connected {
+	color: #00FF00;
+}
+
+#num_clients span, #connection_status span {
     font-size: 3em;
 	clear:left;
 }
@@ -22,7 +31,6 @@ body {
     background-color:#ddd;
     padding: 10px;
 	float:left;
-	margin-left:10px;
 	height:70px;
 }
 

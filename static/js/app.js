@@ -1,6 +1,7 @@
 var socket = new io.Socket(); 
 socket.on('connect', function(){ 
-    console.log("connected!");
+    $("#connection_status .disconnected").hide();
+    $("#connection_status .connected").show();
 });
  
 socket.on('message', function(data){ 
@@ -20,10 +21,12 @@ socket.on('message', function(data){
 });
 
 socket.on('disconnect', function(){
-    
+    $("#connection_status .connected").hide();
+    $("#connection_status .disconnected").show();
+    $("#num_clients span").html("-");
 });
 
-socket.connect();
+socket.connect("",{ reconnect: true});
     
 $("#change_message_container button").live('click', function() {
     var elem = $("#change_message");
