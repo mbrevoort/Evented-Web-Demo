@@ -5,6 +5,8 @@ var http        = require('http'),
     io          = require('socket.io'),
     app         = express.createServer();
 
+var caller_message = "Leave a message";
+
 app.configure(function(){
   app.set("view engine", "hbs");
   app.set('views', __dirname + '/views');
@@ -26,7 +28,7 @@ app.get('/twilio', function(req, res, next) {
     };
 
     socket.broadcast(JSON.stringify(message));
-    res.render("twilio", { locals: { } });
+    res.render("twilio", { locals: { caller_message: caller_message } });
 });
 
 app.post('/twilio', function(req, res, next) {
@@ -45,6 +47,12 @@ app.post('/twilio', function(req, res, next) {
 app.get('/twilio_transcribe', function(req, res, next) {
     res.render("twilio/transcribe", { locals: { } });    
     util.log(util.inspect(req));
+});
+
+app.post('/change_message', function(req, res) {
+   caller_message = req.body.message; 
+   console.log("new caller_message = " + caller_message);
+   res.send(200);
 });
 
 app.listen(process.env.PORT || 8001);
