@@ -22,7 +22,6 @@ body {
     background-color:#ddd;
     padding: 10px;
 	float:left;
-	clear:right;
 	margin-left:10px;
 	height:70px;
 }
@@ -56,6 +55,7 @@ body {
 
 #status_container {
 	width:100%;
+	clear:left;
 }
 
 #status_container div.incoming {
