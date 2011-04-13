@@ -24,7 +24,7 @@ socket.on('disconnect', function(){
     $("#connection_status .connected").hide();
     $("#connection_status .disconnected").show();
     $("#num_clients span").html("-");
-    socket.connect();
+    setTimeout(socket.connect, 600);
 });
 
 socket.connect();
