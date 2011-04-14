@@ -22,7 +22,7 @@ app.configure(function(){
 // Default handler, render client template
 //
 app.get('/', function(req, res, next) {
-  res.render("client", { locals: { } });
+  res.render("client", { locals: { number: "303-351-5939" } });
 });
 
 //
