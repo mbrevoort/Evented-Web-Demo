@@ -5,8 +5,12 @@ var http        = require('http'),
     io          = require('socket.io'),
     app         = express.createServer();
 
+// simple persistence for caller message
 var caller_message = "Leave a message";
 
+//
+// Configure express
+//
 app.configure(function(){
   app.set("view engine", "hbs");
   app.set('views', __dirname + '/views');
@@ -14,12 +18,16 @@ app.configure(function(){
   app.use(express.static(__dirname + '/static'));
 });  
 
+//
+// Default handler, render client template
+//
 app.get('/', function(req, res, next) {
   res.render("client", { locals: { } });
 });
 
-// call twilio, record message, in a websocket stream recorded audio and transcription
-
+//
+// Incoming call from Twilio
+//
 app.get('/twilio', function(req, res, next) {
 
     var message = {
@@ -31,6 +39,9 @@ app.get('/twilio', function(req, res, next) {
     res.render("twilio", { locals: { caller_message: caller_message } });
 });
 
+//
+// Recording posted
+//
 app.post('/twilio', function(req, res, next) {
     var recUrl = req.body.RecordingUrl;
     util.log("Recording URL=" + recUrl);
@@ -44,19 +55,19 @@ app.post('/twilio', function(req, res, next) {
     return res.send("ok");
 });
 
-app.get('/twilio_transcribe', function(req, res, next) {
-    res.render("twilio/transcribe", { locals: { } });    
-    util.log(util.inspect(req));
-});
-
+//
+// Change the message that's spoken to callers
+//
 app.post('/change_message', function(req, res) {
    caller_message = req.body.message; 
-   console.log("new caller_message = " + caller_message);
    res.send(200);
 });
 
 app.listen(process.env.PORT || 8001);
 
+//
+// Socket.IO Listener
+//
 var socket = io.listen(app); 
 socket.on('connection', function(client){ 
     console.log("new socket connection!");
@@ -69,13 +80,15 @@ socket.on('connection', function(client){
     }) 
 });
 
+//
+// Broadcast number of clients status to all connected clients
+//
 function broadcastStatus() {
     // call on next tick because the client hasn't been removed from the list of
     // clients when we are processing a disconnect.
     process.nextTick(function() {
         var num_clients = Object.keys(socket.clients).length;
         var status = JSON.stringify( { type: "status", num_clients: num_clients});
-        console.log("sending status " + util.inspect(status));
         socket.broadcast(status);            
     });
 }
