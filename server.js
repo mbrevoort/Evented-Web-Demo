@@ -7,6 +7,8 @@ var http        = require('http'),
 
 // simple persistence for caller message
 var caller_message = "Leave a message";
+// replace with your phone number!
+var inbound_phone_number = "303-555-1234"
 
 //
 // Configure express
@@ -22,7 +24,7 @@ app.configure(function(){
 // Default handler, render client template
 //
 app.get('/', function(req, res, next) {
-  res.render("client", { locals: { number: "303-351-5939" } });
+  res.render("client", { locals: { number: inbound_phone_number } });
 });
 
 //
@@ -93,7 +95,7 @@ function broadcastStatus() {
     });
 }
 
-/*
+/* sample of what to expect from Twilio on an incoming call
 { AccountSid: 'AC8d378f413f9f2742932bc8642a0d5c02',
   ToZip: '80640',
   FromState: 'CO',
