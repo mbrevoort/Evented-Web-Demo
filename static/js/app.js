@@ -1,4 +1,4 @@
-function() {
+(function() {
     var socket = new io.Socket(); 
 
     socket.on('connect', function(){ 
@@ -46,4 +46,4 @@ function() {
     function setNumberOfClients(num) {
         $("#num_clients span").html(num ? num : "-");
     }
-}();
+})();
